@@ -57,9 +57,6 @@ CREATE TABLE IF NOT EXISTS BookCategory (
 	CONSTRAINT fk_category FOREIGN KEY (category_id) REFERENCES Category (category_id)
 );
 
-
---SELECT User.id, User.name, User.email, UserHistory.progress FROM User INNER JOIN UserHistory ON User.id=UserHistory.userid;
-
 INSERT INTO User (name, email, password, intro)
 VALUES ('Tom', 'tom@gmail.com', 'password1', 'profile info1'), ('Jerry', 'jerry@gmail.com', 'password2', 'profile info2');
 INSERT INTO UserHistory (userid, saved, progress, complete)

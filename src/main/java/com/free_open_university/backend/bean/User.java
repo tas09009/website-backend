@@ -1,17 +1,24 @@
 package com.free_open_university.backend.bean;
 
+<<<<<<< HEAD
 import javax.persistence.*;
 import java.io.Serializable;
+=======
+import com.fasterxml.jackson.annotation.JsonIgnore;
+>>>>>>> 941824806593315e59da0cb10183d60e41a6c9aa
 
+import javax.persistence.*;
 
 @Entity
 @Table(name = "User")
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
+
 
     @Column(name = "name")
     private String name;
@@ -22,8 +29,10 @@ public class User implements Serializable {
     @Column(name = "intro")
     private String intro;
 
-    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user")
+    @JsonIgnore
     private UserHistory userHistory;
+
 
     public long getId() {
         return id;
@@ -49,12 +58,12 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String getPassword() { 
-        return password; 
+    public String getPassword() {
+        return password;
     }
 
     public void setPassword(String password) {
-        this.password = password; 
+        this.password = password;
     }
 
     public String getIntro() {
@@ -65,11 +74,13 @@ public class User implements Serializable {
         this.intro = intro;
     }
 
-    public long getUserHistory() {
-        return id;
+
+    public UserHistory getUserHistory() {
+        return userHistory;
     }
 
-    public void setUserHistory (long id) {
-        this.id = id;
+    public void setUserHistory(UserHistory userHistory) {
+        this.userHistory = userHistory;
+
     }
 }
